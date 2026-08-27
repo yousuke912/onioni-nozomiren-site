@@ -6,6 +6,7 @@ import { ArrowUpRightIcon, LineIcon } from "@/components/Icons";
 
 const navItems = [
   { href: "#about", label: "私たちについて", en: "ABOUT" },
+  { href: "#philosophy", label: "運営理念", en: "PHILOSOPHY" },
   { href: "#project", label: "2027プロジェクト", en: "PROJECT" },
   { href: "#history", label: "歩み・受賞歴", en: "HISTORY" },
   { href: "#social", label: "公式SNS", en: "SOCIAL" },
