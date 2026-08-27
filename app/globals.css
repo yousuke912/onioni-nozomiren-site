@@ -1,7 +1,7 @@
 :root {
   --ink: #161413;
-  --paper: #f3eee4;
-  --paper-deep: #e7dfd1;
+  --paper: #faf7f0;
+  --paper-deep: #f1ecdf;
   --red: #c9251c;
   --red-dark: #9e1712;
   --white: #fffdf8;
@@ -159,8 +159,8 @@ p {
   align-items: center;
   height: var(--header-height);
   padding-inline: 28px 0;
-  color: var(--white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--ink);
+  border-bottom: 1px solid rgba(22, 20, 19, 0.1);
   transition: color 260ms ease, background 260ms ease, box-shadow 260ms ease;
 }
 
@@ -186,7 +186,7 @@ p {
   width: 54px;
   height: 54px;
   place-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.65);
+  border: 2px solid rgba(22, 20, 19, 0.14);
   border-radius: 50%;
   background: var(--white);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
@@ -232,7 +232,7 @@ p {
   min-width: 118px;
   padding-inline: 18px;
   text-align: center;
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(22, 20, 19, 0.12);
   transition: color 180ms ease, background 180ms ease;
 }
 
@@ -300,8 +300,8 @@ p {
   display: block;
   overflow: hidden;
   min-height: min(940px, 100svh);
-  color: var(--white);
-  background: var(--ink);
+  color: var(--ink);
+  background: var(--white);
   isolation: isolate;
 }
 
@@ -314,13 +314,13 @@ p {
   display: grid;
   grid-template-rows: minmax(0, 1fr) 78px;
   width: 54%;
-  background: var(--ink);
+  background: var(--white);
 }
 
 .hero-slider__viewport {
   position: relative;
   overflow: hidden;
-  background: #292624;
+  background: #ece6d8;
 }
 
 .hero-slider__slide {
@@ -456,7 +456,7 @@ p {
   left: -10%;
   width: 50%;
   height: 42%;
-  opacity: 0.18;
+  opacity: 0.09;
   background: var(--red);
   clip-path: polygon(0 8%, 94% 0, 82% 19%, 100% 30%, 76% 45%, 92% 63%, 68% 72%, 79% 100%, 0 90%);
 }
@@ -490,7 +490,7 @@ p {
   height: 58px;
   place-items: center;
   color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(201, 37, 28, 0.3);
   border-radius: 50%;
   background: var(--red);
   letter-spacing: 0.04em;
@@ -507,7 +507,7 @@ p {
 
 .hero h1 em {
   position: relative;
-  color: var(--white);
+  color: var(--ink);
   font-style: normal;
 }
 
@@ -517,8 +517,8 @@ p {
   right: -8px;
   bottom: 4px;
   left: -8px;
-  height: 21%;
-  background: var(--red);
+  height: 28%;
+  background: rgba(201, 37, 28, 0.3);
   content: "";
   transform: skewX(-14deg);
 }
@@ -569,16 +569,16 @@ p {
 }
 
 .button--ghost {
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.58);
-  background: rgba(10, 10, 10, 0.25);
+  color: var(--ink);
+  border: 1px solid rgba(22, 20, 19, 0.35);
+  background: rgba(255, 253, 248, 0.6);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
 .button--ghost:hover {
-  color: var(--ink);
-  border-color: var(--white);
+  color: var(--red);
+  border-color: var(--red);
   background: var(--white);
 }
 
@@ -593,6 +593,7 @@ p {
   width: 46%;
   background: var(--paper);
   color: var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .hero__facts div {
@@ -637,7 +638,7 @@ p {
   width: 1px;
   height: 54px;
   margin-top: 8px;
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(22, 20, 19, 0.25);
 }
 
 .hero__scroll i::after {
@@ -646,7 +647,7 @@ p {
   left: 0;
   width: 1px;
   height: 100%;
-  background: var(--white);
+  background: var(--ink);
   content: "";
   animation: scroll-line 2.2s ease-in-out infinite;
 }
@@ -1312,15 +1313,15 @@ p {
   position: relative;
   overflow: hidden;
   padding-block: 116px 130px;
-  color: var(--white);
-  background: var(--ink);
+  color: var(--ink);
+  background: var(--white);
 }
 
 .awards::after {
   position: absolute;
   right: -60px;
   bottom: -180px;
-  color: rgba(255, 255, 255, 0.025);
+  color: rgba(22, 20, 19, 0.03);
   content: "AWARDS";
   font-family: Arial, Helvetica, sans-serif;
   font-size: 250px;
@@ -1355,7 +1356,7 @@ p {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-top: 1px solid rgba(22, 20, 19, 0.16);
 }
 
 .awards__list article {
@@ -1363,11 +1364,11 @@ p {
   grid-template-columns: 112px 1fr;
   gap: 26px;
   padding: 26px 20px 26px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  border-bottom: 1px solid rgba(22, 20, 19, 0.16);
 }
 
 .awards__list article:nth-child(odd) {
-  border-right: 1px solid rgba(255, 255, 255, 0.28);
+  border-right: 1px solid rgba(22, 20, 19, 0.16);
 }
 
 .awards__list article:nth-child(even) {
@@ -1629,8 +1630,8 @@ p {
   display: grid;
   overflow: hidden;
   min-height: 720px;
-  color: var(--white);
-  background: var(--ink);
+  color: var(--ink);
+  background: var(--paper);
   place-items: center;
   isolation: isolate;
 }
@@ -1650,7 +1651,7 @@ p {
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 9, 8, 0.92), rgba(10, 9, 8, 0.5)), rgba(201, 37, 28, 0.18);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.95), rgba(255, 253, 248, 0.78));
 }
 
 .final-cta__content {
@@ -1670,7 +1671,6 @@ p {
   font-size: clamp(42px, 6.2vw, 82px);
   line-height: 1.32;
   letter-spacing: -0.055em;
-  text-shadow: 0 5px 30px rgba(0, 0, 0, 0.45);
 }
 
 .final-cta__content > a {
@@ -1681,6 +1681,7 @@ p {
   min-width: min(470px, 100%);
   padding: 21px 26px;
   color: var(--ink);
+  border: 1px solid rgba(22, 20, 19, 0.16);
   background: var(--white);
   text-align: left;
   transition: color 200ms ease, background 200ms ease, transform 200ms ease;
@@ -1721,8 +1722,9 @@ p {
 }
 
 .site-footer {
-  color: var(--white);
-  background: var(--ink);
+  color: var(--ink);
+  border-top: 1px solid rgba(22, 20, 19, 0.1);
+  background: var(--paper-deep);
 }
 
 .site-footer__top {
@@ -1792,13 +1794,14 @@ p {
   display: grid;
   width: 46px;
   height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(22, 20, 19, 0.25);
   border-radius: 50%;
   place-items: center;
   transition: border-color 180ms ease, background 180ms ease;
 }
 
 .footer-social a:hover {
+  color: var(--white);
   border-color: var(--red);
   background: var(--red);
 }
@@ -1812,8 +1815,8 @@ p {
   display: flex;
   justify-content: space-between;
   padding-block: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(22, 20, 19, 0.14);
+  color: rgba(22, 20, 19, 0.55);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 9px;
   font-weight: 700;
@@ -1824,7 +1827,7 @@ p {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: var(--white);
+  color: var(--ink);
 }
 
 .site-footer__bottom svg {
@@ -2587,8 +2590,8 @@ p {
   gap: 10px 14px;
   margin: -14px 0 34px;
   padding: 12px 18px;
-  border: 1px solid rgba(243, 238, 228, 0.35);
-  background: rgba(22, 20, 19, 0.55);
+  border: 1px solid rgba(22, 20, 19, 0.14);
+  background: var(--paper);
 }
 
 .hero__awards-label {
@@ -2615,7 +2618,7 @@ p {
 .hero__awards-badge i {
   width: 1px;
   height: 18px;
-  background: rgba(243, 238, 228, 0.4);
+  background: rgba(22, 20, 19, 0.25);
 }
 
 /* philosophy */
@@ -2771,8 +2774,10 @@ p {
 .philosophy__ideal {
   margin-bottom: 48px;
   padding: 44px 40px;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--ink);
+  border: 1px solid rgba(22, 20, 19, 0.12);
+  border-top: 3px solid var(--red);
+  background: var(--white);
 }
 
 .philosophy__ideal-head h3 {
@@ -2784,7 +2789,7 @@ p {
   margin-bottom: 30px;
   font-size: 14px;
   line-height: 2;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .philosophy__ideal-grid {
@@ -2796,13 +2801,13 @@ p {
 .philosophy__ideal-grid h4 {
   margin-bottom: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(243, 238, 228, 0.25);
-  color: var(--white);
+  border-bottom: 1px solid rgba(22, 20, 19, 0.2);
+  color: var(--ink);
   font-size: 16px;
 }
 
 .philosophy__ideal-grid li {
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 .philosophy__join {
@@ -2872,8 +2877,9 @@ p {
 /* philosophy full page */
 .philosophy-page__intro {
   padding: calc(var(--header-height) + 72px) 0 64px;
-  color: var(--paper);
-  background: var(--ink);
+  color: var(--ink);
+  border-bottom: 1px solid rgba(22, 20, 19, 0.1);
+  background: var(--paper-deep);
 }
 
 .philosophy-page__en {
@@ -2894,7 +2900,7 @@ p {
 .philosophy-page__lead {
   font-size: 15px;
   line-height: 2.1;
-  opacity: 0.92;
+  opacity: 0.88;
 }
 
 .philosophy-page .philosophy__mvv {
