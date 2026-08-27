@@ -1,8 +1,11 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export function ScrollEffects() {
+  const pathname = usePathname();
+
   useEffect(() => {
     document.documentElement.classList.add("has-js");
     const targets = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
@@ -34,7 +37,7 @@ export function ScrollEffects() {
       }
     });
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { formatDate, getPosts } from "@/lib/posts";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
-  FacebookIcon,
   InstagramIcon,
   LineIcon,
   PlayIcon,
@@ -61,7 +61,6 @@ const organizationJsonLd = {
     "https://www.youtube.com/channel/UCX4HAcRvpVgmcvO1xkhwl5w",
     "https://www.tiktok.com/@onioni_uraja",
     "https://www.instagram.com/onioni_yoroshiku_nozomiren/reels/",
-    "https://www.facebook.com/groups/154422981410031",
     "https://x.com/onioni_uraja",
   ],
 };
@@ -76,6 +75,7 @@ function SectionTitle({ en, children, light = false }: { en: string; children: R
 }
 
 export default function Home() {
+  const latestNews = getPosts("news").slice(0, 3);
   return (
     <>
       <script
@@ -141,6 +141,30 @@ export default function Home() {
             <span>SCROLL</span>
             <i />
           </a>
+        </section>
+
+        <section className="news-strip" id="news" aria-label="お知らせ">
+          <div className="page-shell news-strip__inner">
+            <p className="news-strip__label">
+              NEWS
+              <span>お知らせ</span>
+            </p>
+            <ul className="news-strip__list">
+              {latestNews.map((post) => (
+                <li key={post.slug}>
+                  <Link href={`/news/${post.slug}/`}>
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    <span>{post.title}</span>
+                    <ArrowRightIcon />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link className="news-strip__more" href="/news/">
+              一覧を見る
+              <ArrowUpRightIcon />
+            </Link>
+          </div>
         </section>
 
         <div className="statement-band" aria-hidden="true">
@@ -516,31 +540,12 @@ export default function Home() {
 
               <a
                 className="social-link"
-                href="https://www.facebook.com/groups/154422981410031"
-                target="_blank"
-                rel="noreferrer"
-                data-reveal
-              >
-                <span className="social-link__index">04</span>
-                <div className="social-link__icon">
-                  <FacebookIcon />
-                </div>
-                <span className="social-link__name">
-                  <small>TEAM COMMUNITY</small>
-                  <strong>Facebook</strong>
-                </span>
-                <span className="social-link__copy">チームの輪につながる</span>
-                <ArrowUpRightIcon />
-              </a>
-
-              <a
-                className="social-link"
                 href="https://x.com/onioni_uraja"
                 target="_blank"
                 rel="noreferrer"
                 data-reveal
               >
-                <span className="social-link__index">05</span>
+                <span className="social-link__index">04</span>
                 <div className="social-link__icon">
                   <XIcon />
                 </div>
@@ -589,6 +594,8 @@ export default function Home() {
           <nav aria-label="フッターナビゲーション">
             <a href="#about">私たちについて</a>
             <a href="#philosophy">運営理念</a>
+            <Link href="/news/">お知らせ</Link>
+            <Link href="/blog/">ブログ</Link>
             <a href="#project">2027プロジェクト</a>
             <a href="#history">歩み・受賞歴</a>
             <a href="#social">公式SNS</a>
@@ -602,9 +609,6 @@ export default function Home() {
             </a>
             <a href="https://www.tiktok.com/@onioni_uraja" target="_blank" rel="noreferrer" aria-label="TikTok">
               <TiktokIcon />
-            </a>
-            <a href="https://www.facebook.com/groups/154422981410031" target="_blank" rel="noreferrer" aria-label="Facebookグループ">
-              <FacebookIcon />
             </a>
             <a href="https://x.com/onioni_uraja" target="_blank" rel="noreferrer" aria-label="X（旧Twitter）">
               <XIcon />

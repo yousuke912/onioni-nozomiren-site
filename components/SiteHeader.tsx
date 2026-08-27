@@ -9,7 +9,8 @@ const navItems = [
   { href: "/#about", label: "私たちについて", en: "ABOUT" },
   { href: "/#philosophy", label: "運営理念", en: "PHILOSOPHY" },
   { href: "/#project", label: "2027プロジェクト", en: "PROJECT" },
-  { href: "/#history", label: "歩み・受賞歴", en: "HISTORY" },
+  { href: "/news/", label: "お知らせ", en: "NEWS" },
+  { href: "/blog/", label: "ブログ", en: "BLOG" },
   { href: "/#social", label: "公式SNS", en: "SOCIAL" },
 ];
 
