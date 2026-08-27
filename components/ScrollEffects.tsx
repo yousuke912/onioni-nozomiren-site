@@ -25,7 +25,14 @@ export function ScrollEffects() {
       { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
     );
 
-    targets.forEach((target) => observer.observe(target));
+    targets.forEach((target) => {
+      const rect = target.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        target.classList.add("is-visible");
+      } else {
+        observer.observe(target);
+      }
+    });
     return () => observer.disconnect();
   }, []);
 
