@@ -35,7 +35,13 @@ export function PostListPage({ category, posts }: { category: PostCategory; post
             <div className="posts__list">
               {posts.map((post) => (
                 <article key={post.slug} data-reveal>
-                  <Link className="post-card" href={`/${category}/${post.slug}/`}>
+                  <Link className={`post-card${post.image ? " post-card--thumb" : ""}`} href={`/${category}/${post.slug}/`}>
+                    {post.image ? (
+                      <span className="post-card__thumb">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={post.image} alt="" loading="lazy" />
+                      </span>
+                    ) : null}
                     <time dateTime={post.date}>{formatDate(post.date)}</time>
                     <div>
                       <h2>{post.title}</h2>
@@ -76,6 +82,12 @@ export function PostArticlePage({ category, post }: { category: PostCategory; po
 
       <section className="posts section-pad">
         <div className="page-shell">
+          {post.image ? (
+            <figure className="post-article__eyecatch" data-reveal>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={post.image} alt={post.title} />
+            </figure>
+          ) : null}
           <article
             className="post-article__body"
             data-reveal

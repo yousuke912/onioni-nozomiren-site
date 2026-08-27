@@ -9,6 +9,7 @@ export type Post = {
   slug: string;
   title: string;
   date: string;
+  image?: string;
   excerpt: string;
   html: string;
 };
@@ -43,8 +44,9 @@ export function getPosts(category: PostCategory): Post[] {
         slug,
         title: String(data.title ?? slug),
         date,
+        image: data.image ? String(data.image) : undefined,
         excerpt: plain.slice(0, 90),
-        html: marked.parse(content, { async: false }) as string,
+        html: marked.parse(content, { async: false, breaks: true }) as string,
       };
     })
     .sort((a, b) => (a.date < b.date ? 1 : -1));
