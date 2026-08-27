@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowUpRightIcon, LineIcon } from "@/components/Icons";
 
 const navItems = [
-  { href: "#about", label: "私たちについて", en: "ABOUT" },
-  { href: "#philosophy", label: "運営理念", en: "PHILOSOPHY" },
-  { href: "#project", label: "2027プロジェクト", en: "PROJECT" },
-  { href: "#history", label: "歩み・受賞歴", en: "HISTORY" },
-  { href: "#social", label: "公式SNS", en: "SOCIAL" },
+  { href: "/#about", label: "私たちについて", en: "ABOUT" },
+  { href: "/#philosophy", label: "運営理念", en: "PHILOSOPHY" },
+  { href: "/#project", label: "2027プロジェクト", en: "PROJECT" },
+  { href: "/#history", label: "歩み・受賞歴", en: "HISTORY" },
+  { href: "/#social", label: "公式SNS", en: "SOCIAL" },
 ];
 
 const lineUrl = "https://line.me/R/ti/p/@301sbdtt?oat_content=url&ts=08260652";
@@ -32,7 +33,7 @@ export function SiteHeader() {
 
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}${menuOpen ? " is-open" : ""}`}>
-      <a className="site-brand" href="#top" aria-label="鬼々よろしく魁望蓮 トップへ">
+      <Link className="site-brand" href="/#top" aria-label="鬼々よろしく魁望蓮 トップへ">
         <span className="site-brand__mark">
           <Image src="/images/logo.jpg" alt="" width={56} height={56} priority />
         </span>
@@ -40,14 +41,14 @@ export function SiteHeader() {
           <strong>鬼々よろしく魁望蓮</strong>
           <small>おにおによろしく のぞみれん</small>
         </span>
-      </a>
+      </Link>
 
       <nav className="desktop-nav" aria-label="メインナビゲーション">
         {navItems.map((item) => (
-          <a href={item.href} key={item.href}>
+          <Link href={item.href} key={item.href}>
             <span>{item.en}</span>
             <small>{item.label}</small>
-          </a>
+          </Link>
         ))}
       </nav>
 
@@ -72,14 +73,14 @@ export function SiteHeader() {
       <div className="mobile-navigation" id="mobile-navigation" aria-hidden={!menuOpen}>
         <nav aria-label="モバイルナビゲーション">
           {navItems.map((item, index) => (
-            <a href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>
+            <Link href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>
               <span className="mobile-navigation__number">0{index + 1}</span>
               <span>
                 <strong>{item.en}</strong>
                 <small>{item.label}</small>
               </span>
               <ArrowUpRightIcon />
-            </a>
+            </Link>
           ))}
         </nav>
         <a className="mobile-line" href={lineUrl} target="_blank" rel="noreferrer">

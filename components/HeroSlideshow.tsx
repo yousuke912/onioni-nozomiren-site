@@ -5,11 +5,6 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/images/hero-smile-wide.png",
-    alt: "笑顔で演舞する鬼々よろしく魁望蓮の踊り子",
-    position: "smile",
-  },
-  {
     src: "/images/hero-flag.jpg",
     alt: "大旗を掲げて踊る鬼々よろしく魁望蓮の踊り子たち",
     position: "flag",
@@ -23,6 +18,11 @@ const slides = [
     src: "/images/hero-lantern.jpg",
     alt: "提灯を手に笑顔で演舞する鬼々よろしく魁望蓮の踊り子",
     position: "lantern",
+  },
+  {
+    src: "/images/hero-smile-wide.png",
+    alt: "笑顔で演舞する鬼々よろしく魁望蓮の踊り子",
+    position: "smile",
   },
 ];
 

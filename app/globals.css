@@ -2850,3 +2850,69 @@ p {
     padding: 30px 22px;
   }
 }
+
+/* philosophy top-page CTA */
+.philosophy__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 28px 30px;
+  border: 1px solid rgba(22, 20, 19, 0.12);
+  background: var(--paper);
+}
+
+.philosophy__more p {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+/* philosophy full page */
+.philosophy-page__intro {
+  padding: calc(var(--header-height) + 72px) 0 64px;
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.philosophy-page__en {
+  margin-bottom: 14px;
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+}
+
+.philosophy-page__intro h1 {
+  margin-bottom: 24px;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+}
+
+.philosophy-page__lead {
+  font-size: 15px;
+  line-height: 2.1;
+  opacity: 0.92;
+}
+
+.philosophy-page .philosophy__mvv {
+  margin-top: 0;
+}
+
+.philosophy-page__back {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+@media (max-width: 800px) {
+  .philosophy__more {
+    padding: 22px 20px;
+  }
+
+  .philosophy-page__intro {
+    padding: calc(var(--header-height) + 48px) 0 48px;
+  }
+}
