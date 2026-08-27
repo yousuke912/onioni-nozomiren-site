@@ -359,6 +359,10 @@ p {
   object-position: 43% center;
 }
 
+.hero-slider__slide--pastel img {
+  object-position: 50% 30%;
+}
+
 .hero-slider__controls {
   display: grid;
   grid-template-columns: auto 1fr auto;

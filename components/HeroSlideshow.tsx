@@ -20,9 +20,9 @@ const slides = [
     position: "lantern",
   },
   {
-    src: "/images/hero-smile-wide.png",
-    alt: "笑顔で演舞する鬼々よろしく魁望蓮の踊り子",
-    position: "smile",
+    src: "/images/hero-pastel-dance.jpg",
+    alt: "笑顔で演舞する鬼々よろしく魁望蓮の踊り子たち",
+    position: "pastel",
   },
 ];
 
