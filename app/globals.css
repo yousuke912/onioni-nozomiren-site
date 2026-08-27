@@ -3506,3 +3506,19 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+.admin__draft {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid rgba(22, 20, 19, 0.15);
+  background: #fff7e0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.admin__badge--draft {
+  color: #7a5b00;
+  background: #fef3c7;
+}

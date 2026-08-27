@@ -15,6 +15,7 @@ type RemotePost = {
   sha: string;
   title: string;
   date: string;
+  draft: boolean;
 };
 
 const CATEGORY_LABEL: Record<Category, string> = { news: "お知らせ", blog: "ブログ" };
@@ -84,6 +85,7 @@ export function AdminApp() {
   const [slug, setSlug] = useState(todaySlug());
   const [body, setBody] = useState("");
   const [imagePath, setImagePath] = useState("");
+  const [draft, setDraft] = useState(false);
   const [editingSha, setEditingSha] = useState<string | null>(null);
   const [editingKey, setEditingKey] = useState<string | null>(null);
 
@@ -135,6 +137,7 @@ export function AdminApp() {
     setSlug(todaySlug());
     setBody("");
     setImagePath("");
+    setDraft(false);
     setEditingSha(null);
     setEditingKey(null);
     setNotice(null);
@@ -201,6 +204,7 @@ export function AdminApp() {
       `title: "${title.replace(/"/g, '\\"')}"`,
       `date: ${date}`,
       ...(imagePath ? [`image: ${imagePath}`] : []),
+      ...(draft ? ["draft: true"] : []),
       "---",
       "",
       body.trim(),
@@ -221,7 +225,7 @@ export function AdminApp() {
     const data = await res.json();
     setEditingSha(data.content?.sha ?? null);
     setEditingKey(`${category}/${slug}`);
-    say("ok", "保存しました！2〜3分ほどでサイトに反映されます。");
+    say("ok", draft ? "下書きとして保存しました。（サイトには表示されません）" : "保存しました！2〜3分ほどでサイトに反映されます。");
   };
 
   const loadList = useCallback(async () => {
@@ -231,15 +235,23 @@ export function AdminApp() {
     for (const cat of ["news", "blog"] as Category[]) {
       const res = await gh(token, `contents/content/${cat}`);
       if (!res.ok) continue;
-      const items = (await res.json()) as { name: string; sha: string }[];
+      const items = (await res.json()) as { name: string; sha: string; download_url: string }[];
       for (const item of items) {
         if (!item.name.endsWith(".md")) continue;
+        let isDraft = false;
+        try {
+          const raw = await fetch(item.download_url).then((r) => r.text());
+          isDraft = /^draft:\s*true\s*$/m.test(raw.split("---")[1] ?? "");
+        } catch {
+          /* noop */
+        }
         results.push({
           category: cat,
           slug: item.name.replace(/\.md$/, ""),
           sha: item.sha,
           title: item.name.replace(/\.md$/, ""),
           date: item.name.slice(0, 10),
+          draft: isDraft,
         });
       }
     }
@@ -272,6 +284,7 @@ export function AdminApp() {
     setTitle(pick("title").replace(/\\"/g, '"'));
     setDate(pick("date").slice(0, 10) || todayDate());
     setImagePath(pick("image"));
+    setDraft(pick("draft") === "true");
     setSlug(post.slug);
     setBody(rest);
     setEditingSha(post.sha);
@@ -362,6 +375,7 @@ export function AdminApp() {
             {posts.map((post) => (
               <div className="admin__list-row" key={`${post.category}/${post.slug}`}>
                 <span className="admin__badge">{CATEGORY_LABEL[post.category]}</span>
+                {post.draft ? <span className="admin__badge admin__badge--draft">下書き</span> : null}
                 <button type="button" className="admin__list-title" onClick={() => openPost(post)}>
                   {post.slug}
                 </button>
@@ -418,6 +432,11 @@ export function AdminApp() {
                 />
               </label>
             </div>
+
+            <label className="admin__draft">
+              <input type="checkbox" checked={draft} onChange={(e) => setDraft(e.target.checked)} />
+              <span>下書きにする（サイトには表示されません）</span>
+            </label>
 
             <div className="admin__field">
               <span>アイキャッチ画像（一覧や記事の上に表示）</span>
@@ -487,9 +506,9 @@ export function AdminApp() {
 
             <div className="admin__actions">
               <button type="button" className="admin__save" onClick={savePost} disabled={busy}>
-                {busy ? "処理中…" : editingSha ? "更新して公開する" : "保存して公開する"}
+                {busy ? "処理中…" : draft ? (editingSha ? "下書きを更新する" : "下書きとして保存") : editingSha ? "更新して公開する" : "保存して公開する"}
               </button>
-              <p>保存すると2〜3分でサイトに反映されます。</p>
+              <p>{draft ? "下書きはサイトには表示されません。公開するときは下書きのチェックを外して保存してください。" : "保存すると2〜3分でサイトに反映されます。"}</p>
             </div>
           </div>
         )}

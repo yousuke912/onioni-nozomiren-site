@@ -10,6 +10,7 @@ export type Post = {
   title: string;
   date: string;
   image?: string;
+  draft: boolean;
   excerpt: string;
   html: string;
 };
@@ -18,7 +19,7 @@ function contentDir(category: PostCategory) {
   return path.join(process.cwd(), "content", category);
 }
 
-export function getPosts(category: PostCategory): Post[] {
+export function getPosts(category: PostCategory, includeDrafts = false): Post[] {
   const dir = contentDir(category);
   if (!fs.existsSync(dir)) return [];
 
@@ -45,10 +46,12 @@ export function getPosts(category: PostCategory): Post[] {
         title: String(data.title ?? slug),
         date,
         image: data.image ? String(data.image) : undefined,
+        draft: data.draft === true || String(data.draft) === "true",
         excerpt: plain.slice(0, 90),
         html: marked.parse(content, { async: false, breaks: true }) as string,
       };
     })
+    .filter((post) => includeDrafts || !post.draft)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
