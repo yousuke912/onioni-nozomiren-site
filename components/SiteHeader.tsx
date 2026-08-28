@@ -5,13 +5,16 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowUpRightIcon, LineIcon } from "@/components/Icons";
 
-const navItems = [
+const membersUrl = "https://members.onioni.jp/";
+
+const navItems: { href: string; label: string; en: string; external?: boolean }[] = [
   { href: "/#about", label: "私たちについて", en: "ABOUT" },
   { href: "/#philosophy", label: "運営理念", en: "PHILOSOPHY" },
   { href: "/#project", label: "2027プロジェクト", en: "PROJECT" },
   { href: "/news/", label: "お知らせ", en: "NEWS" },
   { href: "/blog/", label: "ブログ", en: "BLOG" },
   { href: "/#social", label: "公式SNS", en: "SOCIAL" },
+  { href: membersUrl, label: "メンバー専用", en: "MEMBERS", external: true },
 ];
 
 const lineUrl = "https://line.me/R/ti/p/@301sbdtt?oat_content=url&ts=08260652";
@@ -45,12 +48,19 @@ export function SiteHeader() {
       </Link>
 
       <nav className="desktop-nav" aria-label="メインナビゲーション">
-        {navItems.map((item) => (
-          <Link href={item.href} key={item.href}>
-            <span>{item.en}</span>
-            <small>{item.label}</small>
-          </Link>
-        ))}
+        {navItems.map((item) =>
+          item.external ? (
+            <a href={item.href} key={item.href} target="_blank" rel="noreferrer">
+              <span>{item.en}</span>
+              <small>{item.label}</small>
+            </a>
+          ) : (
+            <Link href={item.href} key={item.href}>
+              <span>{item.en}</span>
+              <small>{item.label}</small>
+            </Link>
+          ),
+        )}
       </nav>
 
       <a className="header-line" href={lineUrl} target="_blank" rel="noreferrer">
@@ -73,16 +83,27 @@ export function SiteHeader() {
 
       <div className="mobile-navigation" id="mobile-navigation" aria-hidden={!menuOpen}>
         <nav aria-label="モバイルナビゲーション">
-          {navItems.map((item, index) => (
-            <Link href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>
-              <span className="mobile-navigation__number">0{index + 1}</span>
-              <span>
-                <strong>{item.en}</strong>
-                <small>{item.label}</small>
-              </span>
-              <ArrowUpRightIcon />
-            </Link>
-          ))}
+          {navItems.map((item, index) => {
+            const inner = (
+              <>
+                <span className="mobile-navigation__number">0{index + 1}</span>
+                <span>
+                  <strong>{item.en}</strong>
+                  <small>{item.label}</small>
+                </span>
+                <ArrowUpRightIcon />
+              </>
+            );
+            return item.external ? (
+              <a href={item.href} key={item.href} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)}>
+                {inner}
+              </a>
+            ) : (
+              <Link href={item.href} key={item.href} onClick={() => setMenuOpen(false)}>
+                {inner}
+              </Link>
+            );
+          })}
         </nav>
         <a className="mobile-line" href={lineUrl} target="_blank" rel="noreferrer">
           <LineIcon />

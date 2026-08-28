@@ -3522,3 +3522,95 @@ p {
   color: #7a5b00;
   background: #fef3c7;
 }
+
+/* members band */
+.members-band {
+  padding-block: 74px;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.members-band__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: center;
+}
+
+.members-band__label {
+  margin-bottom: 12px;
+  color: var(--red);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+}
+
+.members-band__copy h2 {
+  margin-bottom: 16px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+.members-band__copy > p:last-child {
+  margin: 0;
+  font-size: 14px;
+  line-height: 2;
+  opacity: 0.88;
+}
+
+.members-band__button {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 20px 24px;
+  color: var(--ink);
+  background: var(--white);
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.members-band__button:hover {
+  color: var(--white);
+  background: var(--red);
+  transform: translateY(-4px);
+}
+
+.members-band__button span {
+  display: grid;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.members-band__button small {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+}
+
+.members-band__button svg {
+  width: 26px;
+  height: 26px;
+}
+
+.members-band__note {
+  margin: 12px 0 0;
+  font-size: 11px;
+  line-height: 1.9;
+  opacity: 0.62;
+}
+
+@media (max-width: 900px) {
+  .members-band {
+    padding-block: 54px;
+  }
+
+  .members-band__inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}

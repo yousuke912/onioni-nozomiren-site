@@ -445,6 +445,32 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="members-band" id="members">
+          <div className="page-shell members-band__inner">
+            <div className="members-band__copy" data-reveal>
+              <p className="members-band__label">MEMBERS ONLY</p>
+              <h2>連のメンバーの方へ</h2>
+              <p>
+                踊り子の保護者・スタッフ向けのページです。
+                <br />
+                練習の連絡、衣装サイズなどの提出、お支払いの確認ができます。
+              </p>
+            </div>
+            <div className="members-band__action" data-reveal>
+              <a className="members-band__button" href="https://members.onioni.jp/" target="_blank" rel="noreferrer">
+                <span>
+                  <small>ログインはこちら</small>
+                  メンバー専用ページ
+                </span>
+                <ArrowUpRightIcon />
+              </a>
+              <p className="members-band__note">
+                ご利用にはメールアドレスの登録が必要です。登録がお済みでない方は運営までお知らせください。
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section className="movie section-pad">
           <div className="page-shell movie__grid">
             <a
@@ -599,6 +625,7 @@ export default function Home() {
             <a href="#project">2027プロジェクト</a>
             <a href="#history">歩み・受賞歴</a>
             <a href="#social">公式SNS</a>
+            <a href="https://members.onioni.jp/" target="_blank" rel="noreferrer">メンバー専用ページ</a>
           </nav>
           <div className="footer-social" aria-label="公式SNSリンク">
             <a href="https://www.youtube.com/channel/UCX4HAcRvpVgmcvO1xkhwl5w" target="_blank" rel="noreferrer" aria-label="YouTube">
