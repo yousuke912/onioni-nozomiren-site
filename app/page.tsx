@@ -464,9 +464,6 @@ export default function Home() {
                 </span>
                 <ArrowUpRightIcon />
               </a>
-              <p className="members-band__note">
-                ご利用にはメールアドレスの登録が必要です。登録がお済みでない方は運営までお知らせください。
-              </p>
             </div>
           </div>
         </section>
