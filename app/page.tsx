@@ -50,6 +50,41 @@ const awards = [
   { year: "2012", items: ["市役所筋北舞場賞"] },
 ];
 
+const yearPhotos = [
+  { year: "2011", src: "/images/history/year-2011.jpg", caption: "創設の年。赤い衣装で初めての夏へ。" },
+  { year: "2012", src: "/images/history/year-2012.jpg", caption: "市役所筋北舞場賞。仲間が一気に増えた夏。" },
+  { year: "2017", src: "/images/history/year-2017.jpg", caption: "優秀賞「匠」。番傘を手に、揃った演舞で。" },
+  { year: "2017", src: "/images/history/year-2017b.jpg", caption: "大通りいっぱいに広がる隊列。" },
+  { year: "2018", src: "/images/history/year-2018.jpg", caption: "ハレマチ子ども演舞場賞。笑顔で締めくくった夏。" },
+];
+
+const tapestries = [
+  {
+    year: "2014",
+    title: "あっぱれ！岡山",
+    award: "最優秀賞",
+    src: "/images/awards/tapestry-2014.jpg",
+  },
+  {
+    year: "2015",
+    title: "粋でいなせな吉備の園",
+    award: "おかやま信用金庫賞",
+    src: "/images/awards/tapestry-2015.jpg",
+  },
+  {
+    year: "2016",
+    title: "くるくるくるくるなりなり",
+    award: "最優秀賞",
+    src: "/images/awards/tapestry-2016.jpg",
+  },
+  {
+    year: "2019",
+    title: "鬼々ファンファーレ",
+    award: "優秀賞",
+    src: "/images/awards/tapestry-2019.jpg",
+  },
+];
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "PerformingGroup",
@@ -421,6 +456,31 @@ export default function Home() {
                 </div>
               </article>
             </div>
+
+            <div className="year-gallery">
+              <div className="year-gallery__head" data-reveal>
+                <p>PHOTO ALBUM</p>
+                <h3>歴代の夏</h3>
+              </div>
+              <div className="year-gallery__grid">
+                {yearPhotos.map((photo) => (
+                  <figure className="year-photo" key={photo.src} data-reveal>
+                    <div className="year-photo__image">
+                      <Image
+                        src={photo.src}
+                        alt={`${photo.year}年の鬼々よろしく魁望蓮`}
+                        fill
+                        sizes="(max-width: 800px) 94vw, 32vw"
+                      />
+                    </div>
+                    <figcaption>
+                      <span>{photo.year}</span>
+                      <p>{photo.caption}</p>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="awards">
@@ -440,6 +500,38 @@ export default function Home() {
                     </div>
                   </article>
                 ))}
+              </div>
+
+              <div className="tapestry">
+                <div className="tapestry__head" data-reveal>
+                  <p>TAPESTRY</p>
+                  <h3>表町タペストリー</h3>
+                  <p className="tapestry__lead">
+                    うらじゃ期間中、岡山・表町商店街に掲げられるタペストリー。
+                    <br />
+                    連ごとにデザインを持ち寄り、そのなかで賞をいただいた作品です。
+                  </p>
+                </div>
+
+                <div className="tapestry__grid">
+                  {tapestries.map((item) => (
+                    <figure className="tapestry-card" key={item.year} data-reveal>
+                      <div className="tapestry-card__image">
+                        <Image
+                          src={item.src}
+                          alt={`${item.year}年の表町タペストリー「${item.title}」`}
+                          fill
+                          sizes="(max-width: 800px) 46vw, 24vw"
+                        />
+                      </div>
+                      <figcaption>
+                        <span className="tapestry-card__year">{item.year}</span>
+                        <strong>{item.title}</strong>
+                        <span className="tapestry-card__award">{item.award}</span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
