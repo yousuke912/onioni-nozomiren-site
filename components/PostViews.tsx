@@ -68,8 +68,47 @@ export function PostListPage({ category, posts }: { category: PostCategory; post
 
 export function PostArticlePage({ category, post }: { category: PostCategory; post: Post }) {
   const meta = CATEGORY_META[category];
+  const siteUrl = "https://onioni.jp";
+  const url = `${siteUrl}/${category}/${post.slug}/`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": category === "news" ? "NewsArticle" : "BlogPosting",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: "ja",
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    url,
+    ...(post.image ? { image: `${siteUrl}${post.image}` } : {}),
+    author: { "@type": "Organization", name: "鬼々よろしく魁望蓮", url: `${siteUrl}/` },
+    publisher: {
+      "@type": "Organization",
+      name: "鬼々よろしく魁望蓮",
+      logo: { "@type": "ImageObject", url: `${siteUrl}/images/logo.jpg` },
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "ホーム", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: meta.ja, item: `${siteUrl}/${category}/` },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
+  };
+
   return (
     <main id="main-content" className="philosophy-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }}
+      />
       <section className="philosophy-page__intro">
         <div className="page-shell">
           <p className="philosophy-page__en" data-reveal>{meta.en}</p>

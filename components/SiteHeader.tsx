@@ -8,6 +8,7 @@ import { ArrowUpRightIcon, LineIcon } from "@/components/Icons";
 const membersUrl = "https://members.onioni.jp/";
 
 const navItems: { href: string; label: string; en: string; external?: boolean }[] = [
+  { href: "/uraja/", label: "うらじゃとは", en: "URAJA" },
   { href: "/#about", label: "私たちについて", en: "ABOUT" },
   { href: "/#philosophy", label: "運営理念", en: "PHILOSOPHY" },
   { href: "/#project", label: "2027プロジェクト", en: "PROJECT" },

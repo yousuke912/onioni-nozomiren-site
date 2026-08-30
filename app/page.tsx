@@ -87,20 +87,53 @@ const awards = [
   },
 ];
 
+const siteUrl = "https://onioni.jp";
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "PerformingGroup",
-  name: "鬼々よろしく魁望蓮",
-  alternateName: "おにおによろしく のぞみれん",
-  description: "岡山の子ども踊り連。2027年うらじゃで復活します。",
-  areaServed: "岡山県",
-  sameAs: [
-    "https://www.youtube.com/channel/UCX4HAcRvpVgmcvO1xkhwl5w",
-    "https://www.tiktok.com/@onioni_uraja",
-    "https://www.instagram.com/onioni_yoroshiku_nozomiren/reels/",
-    "https://x.com/onioni_uraja",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: `${siteUrl}/`,
+      name: "鬼々よろしく魁望蓮",
+      inLanguage: "ja",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+    {
+      "@type": ["PerformingGroup", "Organization"],
+      "@id": `${siteUrl}/#organization`,
+      name: "鬼々よろしく魁望蓮",
+      alternateName: ["おにおによろしく のぞみれん", "鬼々よろしく魁望連"],
+      url: `${siteUrl}/`,
+      logo: `${siteUrl}/images/logo.jpg`,
+      image: `${siteUrl}/opengraph-image.jpg`,
+      description:
+        "岡山の夏祭り「うらじゃ」に出演する子ども踊り連。小学1年生から中学3年生までの子どもが踊り子として参加し、2027年のうらじゃで7年ぶりに復活します。",
+      foundingDate: "2011",
+      areaServed: { "@type": "AdministrativeArea", name: "岡山県岡山市" },
+      location: {
+        "@type": "Place",
+        name: "岡山県岡山市",
+        address: { "@type": "PostalAddress", addressRegion: "岡山県", addressLocality: "岡山市", addressCountry: "JP" },
+      },
+      knowsAbout: ["うらじゃ", "よさこい", "岡山の祭り", "子どもの踊り", "温羅伝説"],
+      award: [
+        "うらじゃ 最優秀賞「誉」（2016年）",
+        "うらじゃ 優秀賞「匠」（2017年）",
+        "表町タペストリー最優秀賞（2014年・2016年）",
+        "表町タペストリー優秀賞（2019年）",
+      ],
+      sameAs: [
+        "https://www.youtube.com/channel/UCX4HAcRvpVgmcvO1xkhwl5w",
+        "https://www.tiktok.com/@onioni_uraja",
+        "https://www.instagram.com/onioni_yoroshiku_nozomiren/reels/",
+        "https://x.com/onioni_uraja",
+      ],
+    },
   ],
 };
+
 
 function SectionTitle({ en, children, light = false }: { en: string; children: React.ReactNode; light?: boolean }) {
   return (
@@ -658,6 +691,7 @@ export default function Home() {
             </div>
           </div>
           <nav aria-label="フッターナビゲーション">
+            <Link href="/uraja/">うらじゃとは</Link>
             <a href="#about">私たちについて</a>
             <a href="#philosophy">運営理念</a>
             <Link href="/news/">お知らせ</Link>
