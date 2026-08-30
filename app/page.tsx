@@ -85,12 +85,6 @@ const awards = [
     image: "/images/history/year-2012.jpg",
     alt: "2012年の鬼々よろしく魁望蓮",
   },
-  {
-    year: "2011",
-    items: ["チーム創設"],
-    image: "/images/history/year-2011.jpg",
-    alt: "2011年、創設の年の鬼々よろしく魁望蓮",
-  },
 ];
 
 const organizationJsonLd = {
