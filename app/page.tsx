@@ -237,6 +237,27 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="guide-band" aria-labelledby="guide-band-title">
+          <div className="page-shell guide-band__inner">
+            <div className="guide-band__copy" data-reveal>
+              <p className="guide-band__label">はじめての方へ</p>
+              <h2 id="guide-band-title">うらじゃって、<br />どんな祭り？</h2>
+              <p>
+                子どもは何歳から参加できる？ 練習はいつ？ 保護者はどこまで関わる？
+                <br />
+                はじめての方が気になることを、ひとつのページにまとめました。
+              </p>
+            </div>
+            <Link className="guide-band__button" href="/uraja/" data-reveal>
+              <span>
+                <small>URAJA GUIDE</small>
+                うらじゃとは？を読む
+              </span>
+              <ArrowRightIcon />
+            </Link>
+          </div>
+        </section>
+
         <div className="statement-band" aria-hidden="true">
           <div>
             <span>本気の子どもを、本気の大人が応援する。</span>
@@ -266,6 +287,12 @@ export default function Home() {
                   かつてチームを支えた大人たちも、それぞれの場所で7年分パワーアップしています。子どもだけのチームが少なくなった今だからこそ、私たちにできることがある。
                 </p>
                 <strong>みんなとなら、できる。</strong>
+                <p className="about__link">
+                  <Link href="/uraja/">
+                    うらじゃとは？ 子どもが参加する方法を見る
+                    <ArrowRightIcon />
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
