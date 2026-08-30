@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/philosophy/`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/news/`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/blog/`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/privacy/`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const posts: MetadataRoute.Sitemap = (["news", "blog"] as const).flatMap((category) =>

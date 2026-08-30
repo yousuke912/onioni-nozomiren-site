@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { Analytics } from "@/components/Analytics";
 import { ScrollEffects } from "@/components/ScrollEffects";
 import { SiteHeader } from "@/components/SiteHeader";
 import "./globals.css";
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         </a>
         <SiteHeader />
         <ScrollEffects />
+        <Analytics />
         {children}
       </body>
     </html>

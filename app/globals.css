@@ -3927,3 +3927,13 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+.site-footer__privacy {
+  margin-left: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer__privacy:hover {
+  color: var(--red);
+}

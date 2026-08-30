@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://onioni.jp
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

@@ -717,7 +717,10 @@ export default function Home() {
           </div>
         </div>
         <div className="page-shell site-footer__bottom">
-          <span>© 2026 ONI ONI YOROSHIKU NOZOMIREN.</span>
+          <span>
+            © 2026 ONI ONI YOROSHIKU NOZOMIREN.
+            <Link href="/privacy/" className="site-footer__privacy">プライバシーポリシー</Link>
+          </span>
           <a href="#top">PAGE TOP <ArrowRightIcon /></a>
         </div>
       </footer>
